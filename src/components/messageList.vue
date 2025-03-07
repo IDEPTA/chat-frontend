@@ -51,9 +51,12 @@ export default {
             .listen(".message.created", e => {
                 console.log(e);
                 messageStore.addMessage(e);
-            }).listen(".chat.delete", e => {
+            }).listen(".message.deleted", e => {
                 messageStore.deleteMessage(e)
                 console.log('Сообщение удалено:', e);
+            }).listen(".message.updated", e => {
+                messageStore.updateMessage(e)
+                console.log('Сообщение обновлено:', e);
             });
 
         // Загружаем сообщения при монтировании

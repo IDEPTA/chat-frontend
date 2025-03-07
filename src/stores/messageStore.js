@@ -28,6 +28,11 @@ export const useMessageStore = defineStore('messageStore', {
 
         deleteMessage(message) {
             this.messages = this.messages.filter(msg => msg.id !== message.id);
+        },
+
+        updateMessage(message) {
+            const index = this.messages.findIndex(msg => msg.id === message.id);
+            this.messages[index] = { ...this.messages[index], ...message };
         }
     }
 
